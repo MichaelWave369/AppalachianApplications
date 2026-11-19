@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101d1a">
+  <meta name="description" content="HollerCenter 369: a free, playable Appalachian music laboratory. Pick a rhythm, make a little noise, and go on now.">
+  <title>HollerCenter 369 | Appalachian Applications</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#studio">Skip to the music</a>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Appalachian Applications home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 56 56" fill="none"><path d="M3 41 17 21 27 33 37 16 53 41" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 46h48M13 46v-8m30 8V33" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </span>
+      <span><strong>APPALACHIAN</strong><small>APPLICATIONS</small></span>
+    </a>
+    <div class="header-right">
+      <span class="edition">FIELD EXPERIMENT / NO. 001</span>
+      <span class="status-pill"><span class="status-dot"></span> PORCH IS OPEN</span>
+    </div>
+  </header>
+
+  <main id="studio">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="tiny-star">✳</span> MOUNTAIN-MADE MUSIC MACHINES <span class="eyebrow-line"></span> EST. 2026</p>
+        <h1>Holler<span>Center</span><sup>369</sup></h1>
+        <p class="hero-sub">Pull up a chair. Make a little noise.</p>
+        <p class="hero-desc">A homegrown rhythm shed for folks who like their code open, their beats crooked, and their neighbors welcome. No downloads. No account. Just pickin' and grinnin'.</p>
+        <div class="hero-meta"><span>◉ LIVE AUDIO LAB</span><span>↗ MADE FOR THE BROWSER</span><span>∞ FREE TO TINKER</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="sun"></div>
+        <div class="ridge ridge-back"></div>
+        <div class="ridge ridge-mid"></div>
+        <div class="ridge ridge-front"></div>
+        <div class="art-script">Good sounds grow wild.</div>
+        <div class="art-bottom">37° / SOMEWHERE IN THE HOLLER</div>
+      </div>
+    </section>
+
+    <section class="studio-heading">
+      <div><p class="eyebrow">THE RHYTHM SHED</p><h2>Get a little <em>bounce</em> going.</h2></div>
+      <div class="studio-heading-right"><span class="heading-rule"></span><span>01 / SEQUENCER</span></div>
+    </section>
+
+    <div class="workbench">
+      <aside class="controls panel" aria-label="Transport and pattern controls">
+        <div class="panel-top"><span>THE FRONT PORCH</span><span class="panel-number">01</span></div>
+        <div class="transport">
+          <button id="play-button" class="play-button" type="button"><span id="play-icon" aria-hidden="true">▶</span><span id="play-label">GO ON NOW!</span></button>
+          <p id="transport-state" class="transport-state" role="status">Everything's sittin' still.</p>
+        </div>
+        <div class="control-group">
+          <label for="preset">CHOOSE YOUR GROOVE</label>
+          <select id="preset">
+            <option value="porch-funk">Porch Funk</option>
+            <option value="bluegrass-stomp">Bluegrass Stomp</option>
+            <option value="holler-break">Holler Break</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <div class="control-label-row"><label for="tempo">HOW QUICK?</label><output id="tempo-value" for="tempo">106 BPM</output></div>
+          <input id="tempo" type="range" min="60" max="180" step="1" value="106">
+          <div class="range-labels"><span>TAKE IT EASY</span><span>LIGHTNING</span></div>
+        </div>
+        <div class="control-group">
+          <div class="control-label-row"><label for="swing">A LITTLE SWING</label><output id="swing-value" for="swing">13%</output></div>
+          <input id="swing" type="range" min="0" max="40" step="1" value="13">
+        </div>
+        <div class="control-group">
+          <div class="control-label-row"><label for="volume">MASTER VOLUME</label><output id="volume-value" for="volume">70%</output></div>
+          <input id="volume" type="range" min="0" max="100" step="1" value="70">
+        </div>
+        <div class="pattern-actions">
+          <button id="save-button" class="utility-button" type="button">✳ Save on this device</button>
+          <button id="export-button" class="utility-button" type="button">↗ Export pattern</button>
+          <label for="import-file" class="utility-button file-label">↙ Import pattern</label>
+          <input id="import-file" class="visually-hidden" type="file" accept=".json,application/json">
+        </div>
+        <div class="porch-note"><span>✱ FIELD NOTE</span><p>Tap squares to write a rhythm. Hit the big button to hear it. Nobody's judging your timing.</p></div>
+      </aside>
+
+      <section class="sequencer panel" aria-label="16-step rhythm sequencer">
+        <div class="panel-top"><span>THE PICKIN' GRID</span><span class="panel-number">02 / 16 STEPS</span></div>
+        <div class="sequencer-bar"><div><h3>Five mighty instruments.</h3><p>One wonderfully questionable band.</p></div><div id="beat-readout" class="beat-readout" aria-live="off">BEAT <strong>01</strong> / 16</div></div>
+        <div id="steps-header" class="steps-header" aria-hidden="true"></div>
+        <div id="track-grid" class="track-grid"></div>
+        <div class="grid-footer"><span><i class="legend-square"></i> ACTIVE NOTE</span><span><i class="legend-square legend-off"></i> QUIET AS A MOUSE</span><button id="clear-button" type="button">CLEAR THE GRID ↗</button></div>
+
+        <div class="divider-line"></div>
+        <div class="pads-heading"><div><p class="eyebrow">THE JAM CORNER</p><h3>Pick a note, any note.</h3></div><span>CLICK OR USE KEYS 1–6</span></div>
+        <div id="jam-pads" class="jam-pads">
+          <button class="pad" type="button" data-note="261.63" data-key="1"><span>01</span><strong>C</strong><small>DO</small></button>
+          <button class="pad" type="button" data-note="293.66" data-key="2"><span>02</span><strong>D</strong><small>RE</small></button>
+          <button class="pad" type="button" data-note="329.63" data-key="3"><span>03</span><strong>E</strong><small>MI</small></button>
+          <button class="pad" type="button" data-note="392.00" data-key="4"><span>04</span><strong>G</strong><small>SOL</small></button>
+          <button class="pad" type="button" data-note="440.00" data-key="5"><span>05</span><strong>A</strong><small>LA</small></button>
+          <button class="pad" type="button" data-note="523.25" data-key="6"><span>06</span><strong>C</strong><small>DO</small></button>
+        </div>
+        <p class="key-hint">SPACE = START / STOP <span>·</span> 1–6 = BANJO NOTES <span>·</span> HEADPHONES RECOMMENDED</p>
+      </section>
+    </div>
+
+    <section class="dispatch">
+      <div class="dispatch-header"><p class="eyebrow">WHAT'S COOKIN' IN THE HOLLER?</p><h2>More experiments on the way.</h2></div>
+      <div class="dispatch-grid">
+        <article><span class="project-index">01 / READY TO PLAY</span><h3>Washboard.vst</h3><p>Scratchy, rattly percussion with more character than a pickup with mismatched doors.</p><span class="project-tag active">IN THE MIX</span></article>
+        <article><span class="project-index">02 / READY TO PLAY</span><h3>JugBass.exe</h3><p>Low-down synthesized bass. You can take it out of the holler, but you can't take out the thump.</p><span class="project-tag active">IN THE MIX</span></article>
+        <article><span class="project-index">03 / NEXT UP</span><h3>Mosey.NET</h3><p>A future shared-jam bridge, so your buddy across the mountain can join the pickin'.</p><span class="project-tag">ON THE DRAWING BOARD</span></article>
+      </div>
+    </section>
+  </main>
+  <footer><div><strong>APPALACHIAN APPLICATIONS</strong><span>Mountain wisdom. Modern machines.</span></div><p>BUILT IN THE HOLLER. TESTED IN THE BROWSER. SHARED WITH EVERYBODY.</p><a href="https://github.com/MichaelWave369/AppalachianApplications" target="_blank" rel="noopener noreferrer">GO ON NOW, GITHUB ↗</a></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
