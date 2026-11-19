@@ -1,0 +1,26 @@
+name: HollerCenter CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the holler
+        uses: actions/checkout@v4
+      - name: Install Node for the test runner
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check browser code syntax
+        run: |
+          node --check app.js
+          node --check music-core.mjs
+      - name: Run music-core tests
+        run: node --test tests/*.test.mjs
